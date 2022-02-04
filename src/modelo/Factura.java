@@ -15,6 +15,9 @@ public class Factura {
     private double total;
     private String Cliente;
 
+    public Factura() {
+    }
+
     public Factura(Integer id, String fecha, double total, String Cliente) {
         this.id = id;
         this.fecha = fecha;
