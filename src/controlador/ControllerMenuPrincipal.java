@@ -63,8 +63,8 @@ public class ControllerMenuPrincipal {
         //Agregar el frame personas al desk panel
         vistaMenuPrincipal.getDeskprincipal().add(vistaCrudVentas);
         //vistaProductos.getDeskprincipal().add(vistaCrudProductos);
-       //Controler controladorCrudProductos = new ControlerProductos( vistaCrudVentas, modeloCrudVentas);
-       //controladorCrudProductos.iniciaControl(); //empezamos los escuchas a los eventos
+       ControlerVentas controladorCrudVentas = new ControlerVentas( vistaCrudVentas, modeloCrudVentas);
+       controladorCrudVentas.iniciaControl(); //empezamos los escuchas a los eventos
     }
     
 }
