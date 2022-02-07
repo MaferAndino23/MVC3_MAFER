@@ -7,9 +7,11 @@ package controlador;
 
 import modelo.ModelPersona;
 import modelo.ModelProductos;
+import modelo.ModeloDetalleFactura;
 import vista.viewMenuPrincipal;
 import vista.viewPersonas;
 import vista.viewProductos;
+import vista.viewVentas;
 
 /**
  *
@@ -29,7 +31,7 @@ public class ControllerMenuPrincipal {
         vistaMenuPrincipal.getBtnpersona().addActionListener(l->crudPersonas());
         vistaMenuPrincipal.getBtnproductos().addActionListener(l->crudProductos());
         vistaMenuPrincipal.getMenuItemProductos().addActionListener(l->crudProductos());
-
+       vistaMenuPrincipal.getBtnVentas().addActionListener(l->crudVentas());
     }
     private void crudPersonas(){
         //Instacio las clases de modelo y vista
@@ -53,4 +55,16 @@ public class ControllerMenuPrincipal {
        ControlerProductos controladorCrudProductos = new ControlerProductos( vistaCrudProductos, modeloCrudProductos);
        controladorCrudProductos.iniciaControl(); //empezamos los escuchas a los eventos
     }
+    private void crudVentas(){
+        //Instacio las clases de modelo y vista
+         ModeloDetalleFactura modeloCrudVentas = new ModeloDetalleFactura();
+        
+         viewVentas vistaCrudVentas= new viewVentas();
+        //Agregar el frame personas al desk panel
+        vistaMenuPrincipal.getDeskprincipal().add(vistaCrudVentas);
+        //vistaProductos.getDeskprincipal().add(vistaCrudProductos);
+       //Controler controladorCrudProductos = new ControlerProductos( vistaCrudVentas, modeloCrudVentas);
+       //controladorCrudProductos.iniciaControl(); //empezamos los escuchas a los eventos
+    }
+    
 }

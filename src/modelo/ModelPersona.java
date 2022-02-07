@@ -24,7 +24,7 @@ import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import org.postgresql.util.Base64;
-
+import java.awt.Image;
 /**
  *
  * @author Equipo
@@ -129,6 +129,5 @@ public class ModelPersona extends Persona{
          String sql="UPDATE public.persona SET nombres='"+getNombres()+"', apellidos='" + getApellidos()+"', fechanacimiento=to_date('"+getFechaNacimiento()+"','yyyy-mm-dd'),telefono='" + getTelefono()+"', sexo='" + getSexo()+"', sueldo='" + getSueldo()+"', cupo='" + getCupo()+"' WHERE idpersona = '" + identificador + "';";        
          return cpg.accion(sql);
      }
-     
-     
+    
 }

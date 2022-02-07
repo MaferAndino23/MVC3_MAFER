@@ -37,6 +37,7 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
         btnlistapersona = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnproductos = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
         lblMensajePrincipal = new javax.swing.JLabel();
         deskprincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
@@ -77,6 +78,12 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
         btnproductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnproductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnproductos);
+
+        btnVentas.setText("jButton3");
+        btnVentas.setFocusable(false);
+        btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnVentas);
 
         lblMensajePrincipal.setText("Mi Tienda 1.0");
 
@@ -177,6 +184,14 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnVentas() {
+        return btnVentas;
+    }
+
+    public void setBtnVentas(JButton btnVentas) {
+        this.btnVentas = btnVentas;
+    }
+
     public JMenuItem getMenuItemProductos() {
         return MenuItemProductos;
     }
@@ -252,6 +267,7 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemProductos;
+    private javax.swing.JButton btnVentas;
     private javax.swing.JButton btnlistapersona;
     private javax.swing.JButton btnpersona;
     private javax.swing.JButton btnproductos;
