@@ -71,3 +71,53 @@ public class ModeloDetalleFactura extends DetalleFactura {
     
 
 }
+/*
+
+//modleo
+public byte[] imagenDeSql(int numero) {
+        try {
+            String sql = "select foto from hola where idfoto = '" + numero + "' ;";
+            ResultSet rs = con.consulta(sql);
+            byte[] bytea = null;
+            while (rs.next()) {                
+                 bytea = rs.getBytes("foto");
+            }
+            return bytea;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloFoto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+
+    public Image obtenerImagen(byte[] bytes) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        Iterator it = ImageIO.getImageReadersByFormatName("jpg");//recuerda buscar un solo formato 
+        ImageReader reader = (ImageReader) it.next();
+        Object source = bis;
+        ImageInputStream iis = ImageIO.createImageInputStream(source);
+        reader.setInput(iis, true);
+        ImageReadParam param = reader.getDefaultReadParam();
+        param.setSourceSubsampling(1, 1, 0, 0);
+        return reader.read(0, param);
+
+    }
+
+//popner en controlador
+public Icon imagenDBB(int numero) throws IOException {
+        Image imagen = modelo.obtenerImagen(modelo.imagenDeSql(numero));
+        Icon icon = new ImageIcon(imagen.getScaledInstance(150, 150, Image.SCALE_SMOOTH));//aki cambias tamano 
+        return icon;
+    }
+
+    public void CargaImagenenes() throws IOException {
+
+        vista.getBtn1().setIcon(imagenDBB(1));
+        vista.getBtn2().setIcon(imagenDBB(2));
+        vista.getBtn3().setIcon(imagenDBB(3));
+        vista.getBtnFor().setIcon(imagenDBB(4));
+
+    }
+
+
+*/
