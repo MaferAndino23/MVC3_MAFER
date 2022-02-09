@@ -129,5 +129,12 @@ public class ModelPersona extends Persona{
          String sql="UPDATE public.persona SET nombres='"+getNombres()+"', apellidos='" + getApellidos()+"', fechanacimiento=to_date('"+getFechaNacimiento()+"','yyyy-mm-dd'),telefono='" + getTelefono()+"', sexo='" + getSexo()+"', sueldo='" + getSueldo()+"', cupo='" + getCupo()+"' WHERE idpersona = '" + identificador + "';";        
          return cpg.accion(sql);
      }
-    
+//     public List<Persona> listarPersonas(){
+//     String sql = "select idpersona,nombres,apellidos, fechanacimiento,"
+//                    + "COALESCE(substring(cast(age(fechanacimiento) as character varying),1,2),'N/A'),"
+//                    + "telefono,sexo,sueldo,cupo,foto from public.persona where";
+//            sql += " idpersona like '%" + cadena + "%' ";
+//            sql += " OR upper(nombres) like Upper('%" + cadena + "%') ";
+//            sql += " OR upper(apellidos) like Upper('%" + cadena + "%') ";
+//      }
 }

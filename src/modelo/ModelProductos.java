@@ -88,7 +88,7 @@ public class ModelProductos extends Productos{
     public boolean crearProducto(){
         String sql;
         sql="INSERT INTO producto (id,nombre,precio,cantidad,descripcion)";
-        sql+="VALUES('" + getId()+"',' "+getNombre()+"','"+getPrecio()+"','"+getCantidad()+"',' "+getDescripcion()+"');";
+        sql+="VALUES('" +getId()+"',' "+getNombre()+"','"+getPrecio()+"','"+getCantidad()+"',' "+getDescripcion()+"');";
         
         return cpg.accion(sql);
     }
@@ -119,4 +119,18 @@ public class ModelProductos extends Productos{
          String sql="UPDATE public.producto SET nombre='"+getNombre()+"', precio='" + getPrecio()+"', cantidad='" + getCantidad()+"', descripcion='" + getDescripcion()+ "'WHERE id = '" + identificador + "';";       
          return cpg.accion(sql);
      } 
+     public int contar(){
+         try {
+             String sql = "select count(id) as numero from producto;";
+             ResultSet rs=cpg.consulta(sql);
+             while(rs.next()){
+                 return rs.getInt("numero")+1;
+                 
+             }
+             return 0;
+         } catch (SQLException ex) {
+             Logger.getLogger(ModelProductos.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0; 
+     }
 }

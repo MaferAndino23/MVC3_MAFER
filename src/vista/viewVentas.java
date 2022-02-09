@@ -232,11 +232,11 @@ public class viewVentas extends javax.swing.JInternalFrame {
     }
 
     public JDateChooser getjDateChooser1() {
-        return jDateChooser1;
+        return datefecha;
     }
 
     public void setjDateChooser1(JDateChooser jDateChooser1) {
-        this.jDateChooser1 = jDateChooser1;
+        this.datefecha = jDateChooser1;
     }
 
     public JTable getTablaFactura() {
@@ -261,6 +261,30 @@ public class viewVentas extends javax.swing.JInternalFrame {
 
     public void setTxtTotalPagar(JTextField txtTotalPagar) {
         this.txtTotalPagar = txtTotalPagar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTable getTablapro() {
+        return tablapro;
+    }
+
+    public void setTablapro(JTable tablapro) {
+        this.tablapro = tablapro;
+    }
+
+    public JTextField getTxtbuscarPro() {
+        return txtbuscarPro;
+    }
+
+    public void setTxtbuscarPro(JTextField txtbuscarPro) {
+        this.txtbuscarPro = txtbuscarPro;
     }
 
     /**
@@ -298,16 +322,16 @@ public class viewVentas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jButton5 = new javax.swing.JButton();
+        datefecha = new com.toedter.calendar.JDateChooser();
+        btnBuscar = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtbuscarPro = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablapro = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtnumfactura = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaFactura = new javax.swing.JTable();
@@ -326,69 +350,46 @@ public class viewVentas extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn16.setText("jButton5");
         jPanel1.add(btn16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 110));
-
-        btn8.setText("jButton5");
         jPanel1.add(btn8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 130, 110));
-
-        btn6.setText("jButton5");
         jPanel1.add(btn6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 130, 110));
-
-        btn11.setText("jButton5");
         jPanel1.add(btn11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 130, 110));
-
-        btn1.setText("jButton5");
         jPanel1.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 110));
-
-        btn2.setText("jButton5");
         jPanel1.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 130, 110));
-
-        btn3.setText("jButton5");
         jPanel1.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 130, 110));
 
-        btn4.setText("jButton5");
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 130, 110));
-
-        btn5.setText("jButton5");
         jPanel1.add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 130, 110));
-
-        btn17.setText("jButton5");
         jPanel1.add(btn17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 130, 110));
-
-        btn18.setText("jButton5");
         jPanel1.add(btn18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, 110));
-
-        btn19.setText("jButton5");
         jPanel1.add(btn19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 130, 110));
 
-        btn20.setText("jButton5");
+        btn20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn20ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn20, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 130, 110));
 
-        btn15.setText("jButton5");
+        btn15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn15ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn15, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 130, 110));
-
-        btn10.setText("jButton5");
         jPanel1.add(btn10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 130, 110));
-
-        btn7.setText("jButton5");
         jPanel1.add(btn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 130, 110));
-
-        btn12.setText("jButton5");
         jPanel1.add(btn12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, 110));
-
-        btn13.setText("jButton5");
         jPanel1.add(btn13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 130, 110));
-
-        btn14.setText("jButton5");
         jPanel1.add(btn14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 130, 110));
-
-        btn9.setText("jButton5");
         jPanel1.add(btn9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 130, 110));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -400,43 +401,38 @@ public class viewVentas extends javax.swing.JInternalFrame {
         jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
 
         jTextField3.setText("PUBLICO GENERAL");
-        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, -1));
+        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
 
         jLabel5.setText("Fecha:");
         jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        jPanel7.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 210, -1));
+        jPanel7.add(datefecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 210, -1));
 
-        jButton5.setText("Buscar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 70, -1));
+        jPanel7.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 70, -1));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setText("Codigo:");
+        jLabel7.setText("Buscador:");
         jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel8.add(txtbuscarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 200, -1));
 
-        jButton7.setText("Buscar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+        tablapro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Producto ", "Stock"
             }
-        });
-        jPanel8.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 70, -1));
+        ));
+        jScrollPane2.setViewportView(tablapro);
 
-        jLabel8.setText("Stock:");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 110, -1));
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, 70));
 
         jLabel3.setText("Datos de la Venta:");
 
@@ -456,16 +452,15 @@ public class viewVentas extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtnumfactura, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(20, 20, 20))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +468,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtnumfactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
@@ -630,14 +625,9 @@ public class viewVentas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(98, 98, 98)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel6)
+                        .addGap(208, 208, 208)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -648,7 +638,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1047, Short.MAX_VALUE)))
+                    .addContainerGap(1057, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,9 +651,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(252, 252, 252)
-                        .addComponent(jLabel6)
-                        .addGap(33, 33, 33)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -677,17 +665,21 @@ public class viewVentas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_btn4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn15ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn15ActionPerformed
+
+    private void btn20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn20ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -711,14 +703,13 @@ public class viewVentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGeneraVenta;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRecibo;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser datefecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -727,7 +718,6 @@ public class viewVentas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -738,13 +728,14 @@ public class viewVentas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTable tablaFactura;
+    private javax.swing.JTable tablapro;
     private javax.swing.JTextField txtIva;
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotalPagar;
+    private javax.swing.JTextField txtbuscarPro;
+    private javax.swing.JTextField txtnumfactura;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,6 +48,7 @@ public class ControlerProductos {
      public void iniciaControl() {
           //Estar a la escucha de todos los eventos de la vista 
         //boton actualizar
+         //cargarProductos();
         vista.getBtnActualizar().addActionListener(l -> cargarProductos());
         vista.getBtnCrear().addActionListener(l -> abrirDialogo(1));
         vista.getBtnEditar().addActionListener(l -> abrirDialogo(2));
@@ -108,14 +109,16 @@ public class ControlerProductos {
              //String sexo = (String)Combosexo().getSelectedItem();//extraer
               //comboestado.setSelectedItem(lista.get(selec).getestado_civil());
            
-            int id = Integer.parseInt(vista.getTxtId().getText());
+            //int id = Integer.parseInt(vista.getTxtId().getText());
             String nombre = vista.getTxtNombre().getText();
             double precio = Double.valueOf(vista.getTxtPrecio().getText());           
             int cantidad = Integer.parseInt(vista.getTxtCantidad().getText());         
             String descripcion = vista.getAreaDescripcion().getText();
            
             ModelProductos producto = new ModelProductos();
-            producto.setId(id);
+            //System.out.println("000"+producto.contar());
+            producto.setId(producto.contar());
+            //producto.setId(id);
             producto.setNombre(nombre);
             producto.setPrecio(precio);
             producto.setCantidad(cantidad);

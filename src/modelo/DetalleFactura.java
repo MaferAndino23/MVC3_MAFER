@@ -80,5 +80,5 @@ public class DetalleFactura {
     public double obtenerTotal(){
         return cantidad * precio;
     }
-
+    
 }

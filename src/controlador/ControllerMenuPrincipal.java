@@ -5,6 +5,9 @@
  */
 package controlador;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.ModelPersona;
 import modelo.ModelProductos;
 import modelo.ModeloDetalleFactura;
@@ -56,15 +59,19 @@ public class ControllerMenuPrincipal {
        controladorCrudProductos.iniciaControl(); //empezamos los escuchas a los eventos
     }
     private void crudVentas(){
-        //Instacio las clases de modelo y vista
-         ModeloDetalleFactura modeloCrudVentas = new ModeloDetalleFactura();
-        
-         viewVentas vistaCrudVentas= new viewVentas();
-        //Agregar el frame personas al desk panel
-        vistaMenuPrincipal.getDeskprincipal().add(vistaCrudVentas);
-        //vistaProductos.getDeskprincipal().add(vistaCrudProductos);
-       ControlerVentas controladorCrudVentas = new ControlerVentas( vistaCrudVentas, modeloCrudVentas);
-       controladorCrudVentas.iniciaControl(); //empezamos los escuchas a los eventos
+        try {
+            //Instacio las clases de modelo y vista
+            ModeloDetalleFactura modeloCrudVentas = new ModeloDetalleFactura();
+            
+            viewVentas vistaCrudVentas= new viewVentas();
+            //Agregar el frame personas al desk panel
+            vistaMenuPrincipal.getDeskprincipal().add(vistaCrudVentas);
+            //vistaProductos.getDeskprincipal().add(vistaCrudProductos);
+            ControlerVentas controladorCrudVentas = new ControlerVentas( vistaCrudVentas, modeloCrudVentas);
+            controladorCrudVentas.iniciaControl(); //empezamos los escuchas a los eventos
+        } catch (IOException ex) {
+            Logger.getLogger(ControllerMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

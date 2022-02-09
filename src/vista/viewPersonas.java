@@ -24,14 +24,6 @@ public class viewPersonas extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public JButton getBtnImagen() {
-        return btnImagen;
-    }
-
-    public void setBtnImagen(JButton btnImagen) {
-        this.btnImagen = btnImagen;
-    }
-
     public JTextField getTxtBuscador() {
         return TxtBuscador;
     }
@@ -244,7 +236,6 @@ public class viewPersonas extends javax.swing.JInternalFrame {
         btnactualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablapersonas = new javax.swing.JTable();
-        btnImagen = new javax.swing.JButton();
 
         dialogopersona.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -462,8 +453,6 @@ public class viewPersonas extends javax.swing.JInternalFrame {
             tablapersonas.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        btnImagen.setText("jButton1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -471,8 +460,6 @@ public class viewPersonas extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnactualizar)
                 .addContainerGap())
@@ -484,12 +471,10 @@ public class viewPersonas extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
                         .addComponent(btnactualizar)
                         .addContainerGap())))
         );
@@ -504,7 +489,6 @@ public class viewPersonas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LblFoto;
     private javax.swing.JTextField TxtBuscador;
     private javax.swing.JButton btnExaminar;
-    private javax.swing.JButton btnImagen;
     private javax.swing.JButton btnaceptar;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncancelar;
