@@ -7,6 +7,7 @@ package modelo;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,10 +74,10 @@ public class ModeloDetalleFactura extends DetalleFactura {
 
     }
 
-    public boolean crearDetalleFactura() {
-        String sql = "insert into detallefactura values ('" + getId() + "','" + getFactura() + "','" + getProducto() + "','" + getCantidad() + "','" + getPrecio() + "','" + getTotal() + "')";
-        return con.accion(sql);
-    }
+//    public boolean crearDetalleFactura() {
+//        String sql = "insert into detallefactura values ('" + getId() + "','" + getFactura() + "','" + getProducto() + "','" + getCantidad() + "','" + getPrecio() + "','" + getTotal() + "')";
+//        return con.accion(sql);
+//    }
 
     public boolean modificarDetalleFactura() {
         String sql = "update  detallefactura set factura='" + getFactura() + "',producto='" + getProducto() + "',cantidad='" + getCantidad() + "',precio='" + getPrecio() + "',total='" + getTotal() + "' where id = '" + getId() + "'";
@@ -129,7 +131,7 @@ public class ModeloDetalleFactura extends DetalleFactura {
     public List<Productos> productitos(String Buscar) {
         try {
             List<Productos> listaproductos = new ArrayList<Productos>();
-            String sql = "SELECT id, nombre, cantidad  FROM public.producto where  lower(nombre) like lower('%"+Buscar+"%') ;";
+            String sql = "SELECT id, nombre, cantidad  FROM public.producto where  lower(nombre) like lower('%" + Buscar + "%') ;";
             ResultSet rs = con.consulta(sql);
             while (rs.next()) {
                 Productos producto = new Productos();
@@ -147,18 +149,112 @@ public class ModeloDetalleFactura extends DetalleFactura {
         }
         return null;
     }
-//    public int contar(){
-//         try {
-//             String sql = "select count(id) as numero from factura;";
-//             ResultSet rs=con.consulta(sql);
-//             while(rs.next()){
-//                 return rs.getInt("numero")+1;
-//                 
-//             }
-//             return 0;
-//         } catch (SQLException ex) {
-//             Logger.getLogger(ModelProductos.class.getName()).log(Level.SEVERE, null, ex);
-//         }
-//         return 0; 
+
+    public List<Persona> buscarpersona(String Buscar) {
+        try {
+            List<Persona> listapersona = new ArrayList<Persona>();
+            String sql = "SELECT nombres, apellidos, telefono FROM public.persona where idpersona = '" + Buscar + "';";
+            ResultSet rs = con.consulta(sql);
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setNombres(rs.getString("nombres"));
+                persona.setApellidos(rs.getString("apellidos"));
+                persona.setTelefono(rs.getInt("telefono"));
+
+                listapersona.add(persona);
+
+            }
+            rs.close();
+            return listapersona;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int contar() {
+        try {
+            String sql = "select count(id) as numero from factura;";
+            ResultSet rs = con.consulta(sql);
+            while (rs.next()) {
+                return rs.getInt("numero") + 1;
+
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public boolean creardetallefactura() {
+        try {
+
+            String sql = "INSERT INTO public.detallefactura(id, factura, producto, cantidad, precio, total)VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement ps = con.getCon().prepareStatement(sql);
+            ps.setInt(1, getFactura());
+            ps.setInt(2, getFactura());
+            ps.setInt(3, getProducto());
+            ps.setInt(4, getCantidad());
+            ps.setDouble(5, getPrecio());
+            ps.setDouble(6, getTotal());
+            ps.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+//    public boolean restame(int factura, int producto){
+//        String sql="UPDATE public.producto SET cantidad=cantidad-"
+//                + "(select cantidad from detallefactura where id='"+factura+"' and producto='"+producto+"') "
+//                + "WHERE id='"+producto+"' ;";
+//        System.out.println(sql);
+//        return con.accion(sql);
+//    }
+//    public boolean restame(int cantidad, int producto ){
+//        try {
+//            String sql="UPDATE public.producto SET cantidad= ? WHERE id=? ;";
+//            PreparedStatement ps = con.getCon().prepareStatement(sql);
+//            ps.setInt(1, cantidad);
+//            ps.setInt(2, producto);
+//            ps.executeUpdate();
+//            return true;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
+//    }
+     public boolean restame(){
+        try {
+            String sql="UPDATE public.producto SET cantidad= ? WHERE id=? ;";
+            PreparedStatement ps = con.getCon().prepareStatement(sql);
+            ps.setInt(1, getCantidad());
+            ps.setInt(2, getProducto());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+//     public Productos buscameid(){
+//         Productos pro = new Productos();
+//         String sql ="select cantidad from producto where id='1';";
 //     }
+     public int buscameid(int numero) {
+        try {
+            String sql = "select cantidad from producto where id='"+numero+"';";
+            ResultSet rs = con.consulta(sql);
+            while (rs.next()) {
+                return rs.getInt("cantidad");
+
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

@@ -35,8 +35,9 @@ public class ControllerMenuPrincipal {
         vistaMenuPrincipal.getBtnproductos().addActionListener(l->crudProductos());
         vistaMenuPrincipal.getMenuItemProductos().addActionListener(l->crudProductos());
        vistaMenuPrincipal.getBtnVentas().addActionListener(l->crudVentas());
+      
     }
-    private void crudPersonas(){
+    public void crudPersonas(){
         //Instacio las clases de modelo y vista
          ModelPersona modeloCrudPersonas = new ModelPersona();
         viewPersonas vistaCrudPersonas = new viewPersonas();

@@ -238,7 +238,7 @@ public class viewMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnlistapersona;
     private javax.swing.JButton btnpersona;
     private javax.swing.JButton btnproductos;
-    private javax.swing.JDesktopPane deskprincipal;
+    public static javax.swing.JDesktopPane deskprincipal;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;

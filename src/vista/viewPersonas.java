@@ -375,7 +375,10 @@ public class viewPersonas extends javax.swing.JInternalFrame {
 
         dialogopersona.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 410));
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jLabel1.setText("Buscar");
 

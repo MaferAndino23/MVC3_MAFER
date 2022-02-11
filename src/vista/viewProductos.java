@@ -164,6 +164,10 @@ public class viewProductos extends javax.swing.JInternalFrame {
 
         DialogoProducto.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 410));
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel1.setText("Buscar");
 
         btnCrear.setText("Crear");

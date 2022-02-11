@@ -3,10 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/ModeloFactura.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/DetalleFactura.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/Productos.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/vista/viewMenuPrincipal.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/ModelPersona.java</file>
             <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/ModelProductos.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/controlador/ControlerPersona.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/vista/viewProductos.java</file>
             <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/controlador/ControlerVentas.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/controlador/ControllerMenuPrincipal.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/vista/viewVentas.java</file>
             <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/ModeloDetalleFactura.java</file>
             <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/controlador/ControlerProductos.java</file>
+            <file>file:/C:/Users/Equipo/Documents/NetBeansProjects/MVC3_MAFER/src/modelo/Factura.java</file>
         </group>
     </open-files>
 </project-private>

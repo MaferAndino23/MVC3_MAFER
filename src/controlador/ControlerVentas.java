@@ -13,16 +13,26 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleFactura;
+import modelo.ModelPersona;
 import modelo.ModeloDetalleFactura;
+import modelo.ModeloFactura;
+import modelo.Persona;
 import modelo.Productos;
+import vista.viewMenuPrincipal;
 import vista.viewPersonas;
 import vista.viewProductos;
 import vista.viewVentas;
@@ -37,7 +47,7 @@ public class ControlerVentas {
     private viewPersonas vista2;
     private ModeloDetalleFactura modelo;
     private JFileChooser jfc;
-
+    private ModeloFactura modeloFactura = new ModeloFactura();
     public static ArrayList<DetalleFactura> listaDetalleFactura = new ArrayList();
 
     ModeloDetalleFactura dbp = new ModeloDetalleFactura(); //inicializar llamar al objeto de la clase
@@ -49,6 +59,8 @@ public class ControlerVentas {
         this.modelo = modelo;
         vista.setVisible(true);
         CargarDisponibilidad("");
+        llenaridfactura();
+
     }
 
     public void iniciaControl() throws IOException {
@@ -67,9 +79,12 @@ public class ControlerVentas {
             @Override
             public void keyReleased(KeyEvent e) {
                 CargarDisponibilidad(vista.getTxtbuscarPro().getText());
+                llenarCuadrosDialogoPersona(vista.getTxtBuscarCliente().getText());
+
             }
         };
         vista.getTxtbuscarPro().addKeyListener(kl);//
+        vista.getTxtBuscarCliente().addKeyListener(kl);//
         CargaImagenenes();
         suma();
 
@@ -111,14 +126,16 @@ public class ControlerVentas {
         vista.getBtn8().addActionListener(l -> Botones(8));
         vista.getBtn9().addActionListener(l -> Botones(9));
         vista.getBtn11().addMouseListener(ml);
-        //vista.getBtnBuscar().addActionListener(l -> vista2.setVisible(true));
+        vista.getBtnGeneraVenta().addActionListener(l -> GenerarVenta());
+        vista.getBtnNuevo().addActionListener(l -> crearnuevaventa());
+        
     }
 
     public void suma() {
         int contar = vista.getTablaFactura().getRowCount();
         double suma = 0;
         for (int i = 0; i < contar; i++) {
-            suma = suma + Double.parseDouble(vista.getTablaFactura().getValueAt(i, 4).toString());
+            suma = suma + Double.parseDouble(vista.getTablaFactura().getValueAt(i, 5).toString());
         }
         vista.getTxtSubtotal().setText(Double.toString(suma));
 
@@ -137,55 +154,27 @@ public class ControlerVentas {
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaFactura().getModel();
         List<Productos> listapro = modelo.productitos(numero);
         listapro.stream().forEach(lp -> {
+            if (RevisaCodigo(String.valueOf(lp.getId()), tblModel)) {
+                tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), "1", lp.getPrecio(), lp.getPrecio()});
+            } else {
+                for (int i = 0; i < tblModel.getRowCount(); i++) {
+                    String codigo = tblModel.getValueAt(i, 0).toString();
+                    if (String.valueOf(lp.getId()).equals(codigo)) {
 
-//             if (!buscaProductoEnModelo (String.valueOf(lp.getId()), tblModel)) {
-//                 
-//                     
-//                 
-            tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), buscaUltimaCantidad(String.valueOf(lp.getId()), tblModel), lp.getPrecio()});
-//                 System.out.println(buscaUltimaCantidad(String.valueOf(lp.getId()),tblModel));
-//                
-//             }else{
-            //tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), buscaUltimaCantidad(String.valueOf(lp.getId()),tblModel), lp.getPrecio()});
-            System.out.println("estoy en el false");
-            // }
+                        double precio = Double.parseDouble(tblModel.getValueAt(i, 4).toString());
+                        int numerito = Integer.parseInt(tblModel.getValueAt(i, 3).toString());
+                        numerito++;
+                        double total = numerito * precio;
+                        tblModel.setValueAt(numerito, i, 3);
+                        tblModel.setValueAt(total, i, 5);
+                        tblModel.fireTableRowsUpdated(i, i);
 
-        });
-
-        contador = 0;
-        int codigo = codigo();
-        if (vista.getTablaFactura().getRowCount() >= 1) {
-            for (int i = 0; i < vista.getTablaFactura().getRowCount(); i++) {
-                if (codigo == Integer.parseInt(vista.getTablaFactura().getValueAt(i, 0).toString())) {
-
-                    System.out.println("codigo:" + codigo);
-                    contador++;
-
+                    }
                 }
             }
-        } else {
-            contador = 1;
-
-        }
-
-        listapro.stream().forEach(lp -> {
-
-//             if (!buscaProductoEnModelo (String.valueOf(lp.getId()), tblModel)) {
-//                 
-//                     
-//                 
-            tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), contador, lp.getPrecio()});
-//                 System.out.println(buscaUltimaCantidad(String.valueOf(lp.getId()),tblModel));
-//                
-//             }else{
-            //tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), buscaUltimaCantidad(String.valueOf(lp.getId()),tblModel), lp.getPrecio()});
-            System.out.println("estoy en el false");
-            // }
 
         });
 
-        System.out.println("Cantidad:" + contador);
-        //System.out.println(buscaUltimaCantidad(codigo, tblModel));
         suma();
     }
 
@@ -228,17 +217,17 @@ public class ControlerVentas {
 
     }
 
-    private boolean buscaProductoEnModelo(String codigo, DefaultTableModel modelo) {
+    private boolean RevisaCodigo(String codigo, DefaultTableModel modelo) {
         if (codigo != null && modelo != null) {
             for (int renglon = 0; renglon < modelo.getRowCount(); renglon++) {
                 String codigoEnRenglon = (String) modelo.getValueAt(renglon, 0);
                 if (codigo.equals(codigoEnRenglon)) {
-                    return true;
+                    return false;
                 }
             }
 
         }
-        return false;
+        return true;
     }
 
     private int codigo() {
@@ -262,13 +251,108 @@ public class ControlerVentas {
         return cuentame++;
     }
 
-//    private int () {
-//        if (String.valueOf(lp.getId()) != null && tblModel != null) {
-//            for (int i = 0; i < tblModel.getRowCount(); i++) {
-//                String codigo = (String) tblModel.getValueAt(i, 0);
-//                //if (codigo >= 0 ) {
-//                System.out.println(codigo);
-//                //}
-//            }
-//        }
+    private void llenarCuadrosDialogoPersona(String cadenaBusqueda) {
+        List<Persona> listaPersona = modelo.buscarpersona(cadenaBusqueda);
+
+        listaPersona.stream().forEach(p -> {
+            String[] persona = {p.getNombres(), p.getApellidos(),
+                String.valueOf(p.getTelefono())};
+
+            vista.getLblnombre().setText(persona[0]);
+            vista.getLblapellido().setText(persona[1]);
+            vista.getLbltelefono().setText(persona[2]);
+
+        });
+    }
+
+    private void llenaridfactura() {
+        vista.getLblFactura().setText(modelo.contar() + "");
+    }
+
+    private void crearFactura() {
+        modeloFactura.setId(Integer.parseInt(vista.getLblFactura().getText()));
+        modeloFactura.setFecha(((JTextField) vista.getDatefecha().getDateEditor().getUiComponent()).getText());
+        modeloFactura.setTotal(Double.parseDouble(vista.getTxtTotalPagar().getText()));
+        modeloFactura.setCliente(vista.getTxtBuscarCliente().getText());
+        if (modeloFactura.crearFactura()) {
+            crear();
+            JOptionPane.showMessageDialog(vista, "Factura Creada Con Satisfaccion");
+        } else {
+            JOptionPane.showMessageDialog(vista, "Valiendo Gasver");
+        }
+
+    }
+
+    public void crear() {
+        ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaFactura().getModel();
+        //List<Productos> listapro = modelo.productitos(numero);
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+            modelodeta.setFactura(Integer.parseInt(vista.getLblFactura().getText()));
+            modelodeta.setId(Integer.parseInt(vista.getLblFactura().getText()));
+            modelodeta.setProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            modelodeta.setCantidad(Integer.parseInt(tblModel.getValueAt(i, 3).toString()));
+            modelodeta.setPrecio(Double.parseDouble(tblModel.getValueAt(i, 4).toString()));
+            modelodeta.setTotal(Double.parseDouble(tblModel.getValueAt(i, 5).toString()));
+            if (modelodeta.creardetallefactura()) {
+                //JOptionPane.showMessageDialog(vista, "Factura Creada Con Satisfaccion");
+                //stock();
+            } else {
+                JOptionPane.showMessageDialog(vista, "Valiendo Gasver");
+            }
+
+        }
+    }
+
+    private void stock() {
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaFactura().getModel(); 
+        ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
+        
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+            int count=modelodeta.buscameid(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            int cantidad=Integer.parseInt(tblModel.getValueAt(i, 3).toString());
+            int resta=count-cantidad; 
+            //System.out.println("La cantidad es: "+count+"  La cantidad comprada es: " +cantidad+" y me voy a guardar como: "+resta);
+            modelodeta.setCantidad(resta);
+            modelodeta.setProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            if (modelodeta.restame()) {
+                
+            }else {
+                JOptionPane.showMessageDialog(vista, "Valiendo Gasver");
+            }
+
+        }
+        
+     }
+
+    private void GenerarVenta() {
+        crearFactura();
+        stock();
+        CargarDisponibilidad("");
+    }
+
+//    public void actualizar() {
+//        limpiarCampos();
+//        crearFactura();
+//        
+//    }
+    public void crearnuevaventa(){
+        llenaridfactura();
+        limpiarCampos();
+    }
+
+    //LIMPIAR CAMPOS
+    private void limpiarCampos() {
+        vista.getLblnombre().setText(null);
+        vista.getLblapellido().setText(null);
+        vista.getLbltelefono().setText(null);
+        vista.getDatefecha().setDate(null);
+        vista.getTxtBuscarCliente().setText(null);
+        vista.getTxtIva().setText(null);
+        vista.getTxtSubtotal().setText(null);
+        vista.getTxtTotalPagar().setText(null);
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaFactura().getModel();
+        tblModel.setNumRows(0);//limpiar campos
+    }
+
 }
